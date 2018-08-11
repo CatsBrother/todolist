@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <title>TODOLIST</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="todolist">
+        <h1>todos</h1>
+        <div class="content">
+            <input type="text" placeholder="What needs to be done" autofocus="autofocus" v-on:keyup.enter="submit" v-model="content"/>
+            <button class="down" @click="all"></button>
+            <ul class="list">
+                    <li v-for='(list,index) in comp' :class="list.over?'line':'noline'">                    
+                    <button class="finish" @click="finish(index)">
+                        <img src="images/img2.gif"  v-if="list.over">
+                    </button>
+                    {{list.con}}
+                    <button class="delate" @click="delate(index)"></button>
+                </li>
+            </ul>
+            <div class="sum" v-if="lists[0]">
+                <p><span>{{ item}}</span> items left</p>
+                <div class="btn">
+                    <button @click="showall">All</button>
+                    <button @click="showactive">Active</button>
+                    <button @click="showcompleted">Completed</button>
+                </div>
+                <a href="#" class="clear" @click="clear">Clear completed</a>
+            </div>
+        </div>
+        <div class="other">
+            <p>double click to edit a todo</p>
+            <p>written by <a href="#">evan you</a></p>
+            <p>part of <a href="#">TodoMVC</a></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
